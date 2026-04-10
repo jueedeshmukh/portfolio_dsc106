@@ -89,3 +89,59 @@ h1 {
   font-size: 400%;
 }
 
+#experience article {
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 1.5em;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.5em;
+}
+
+#experience article:hover {
+  transform: rotateY(180deg);
+}
+
+#experience article header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5em;
+}
+
+#experience article header h3 {
+  margin: 0 0 0.5em 0;
+}
+
+#experience article header time {
+  font-size: 0.9em;
+  color: oklch(60% 0% 0);
+}
+
+#experience article ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  padding: 1.5em;
+  margin: 0;
+  padding-left: calc(1.5em + 1.5em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
