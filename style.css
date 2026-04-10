@@ -46,5 +46,16 @@ button {
 form {
   display: grid;
   grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+button {
+  grid-column: 1 / -1;
 }
 
