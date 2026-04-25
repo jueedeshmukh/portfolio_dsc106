@@ -12,7 +12,13 @@ let pages = [
   { url: 'https://github.com/jueedeshmukh', title: 'GitHub' },
 ];
 
-let scriptURL = new URL(document.currentScript.src);
+// Support both module imports and direct <script type="module"> loading.
+// When imported as a module, document.currentScript is null, so use import.meta.url.
+let scriptURL = new URL(
+  (typeof import.meta !== 'undefined' && import.meta.url) ||
+    document.currentScript?.src ||
+    location.href,
+);
 let siteRoot = new URL('.', scriptURL);
 
 let nav = document.createElement('nav');
@@ -90,6 +96,9 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   const headingTag = /^h[1-6]$/i.test(headingLevel)
     ? headingLevel.toLowerCase()
     : 'h2';
+
+  if (!(containerElement instanceof Element)) return;
+  if (!Array.isArray(project)) project = [];
 
   containerElement.innerHTML = '';
   for (const proj of project) {
