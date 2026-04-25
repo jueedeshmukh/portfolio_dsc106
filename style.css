@@ -159,3 +159,54 @@ h1 {
   overflow-y: auto;
 }
 
+#profile-stats .stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+#profile-stats .stat-card {
+  height: 8rem;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+}
+
+#profile-stats .stat-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+#profile-stats .stat-card:hover .stat-card-inner,
+#profile-stats .stat-card:focus .stat-card-inner,
+#profile-stats .stat-card:focus-within .stat-card-inner {
+  transform: rotateY(180deg);
+}
+
+#profile-stats .stat-card-front,
+#profile-stats .stat-card-back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid oklch(80% 3% 200);
+  border-radius: 0.6rem;
+  backface-visibility: hidden;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+#profile-stats .stat-card-front {
+  background: color-mix(in oklch, var(--color-accent), canvas 88%);
+  font-weight: 600;
+}
+
+#profile-stats .stat-card-back {
+  transform: rotateY(180deg);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
