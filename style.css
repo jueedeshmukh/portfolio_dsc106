@@ -79,6 +79,31 @@ button {
   gap: 1em;
 }
 
+.projects article {
+  background: color-mix(in oklch, canvas 92%, var(--color-accent) 8%);
+  border: 1px solid color-mix(in oklch, canvastext 14%, canvas 86%);
+  border-radius: 0.9rem;
+  padding: 0.9rem;
+  box-shadow: 0 0.35rem 1rem color-mix(in oklch, canvastext 10%, transparent);
+}
+
+.projects .project-meta {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.projects .project-meta p {
+  margin: 0;
+}
+
+.projects .project-year {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in oklch, var(--color-accent), canvastext 38%);
+  text-transform: uppercase;
+}
+
 article {
   display: grid;
   grid-template-rows: subgrid;
