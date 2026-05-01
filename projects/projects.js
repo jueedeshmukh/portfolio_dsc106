@@ -21,14 +21,15 @@ let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
 
 // step 1.4
-let data = [
-  { value: 1, label: 'apples' },
-  { value: 2, label: 'oranges' },
-  { value: 3, label: 'mangos' },
-  { value: 4, label: 'pears' },
-  { value: 5, label: 'limes' },
-  { value: 5, label: 'cherries' },
-];
+let rolledData = d3.rollup(
+  projects,
+  (v) => v.length, // count the number of projects in each year
+  (d) => d.year // group by year
+);
+let data = rolledData.map(([year, count]) => {
+  return { value: count, label: year };
+});
+
 let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
 let arcs = arcData.map((d) => arcGenerator(d));
