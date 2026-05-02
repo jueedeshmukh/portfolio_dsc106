@@ -242,6 +242,25 @@ h1 {
   overflow: visible;
 }
 
+.searchBar {
+  display: block;
+  width: min(100%, 40rem);
+  margin: 1.5rem auto 2rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid color-mix(in oklch, canvastext 20%, canvas 80%);
+  border-radius: 1.1rem;
+  background: color-mix(in oklch, canvas 96%, var(--color-accent) 6%);
+  box-shadow: 0 0.25rem 0.75rem color-mix(in oklch, canvastext 10%, transparent);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 0.2rem color-mix(in oklch, var(--color-accent) 30%, canvas 70%);
+}
+
 .pie-legend-container {
   display: flex;
   align-items: flex-start;
@@ -253,6 +272,29 @@ h1 {
 #projects-pie-plot {
   flex: 0 0 20rem;
   width: min(100%, 20rem);
+}
+
+#projects-pie-plot path {
+  transition: opacity 300ms ease, transform 300ms ease;
+  cursor: pointer;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path:hover {
+  transform: scale(1.02);
+}
+
+#projects-pie-plot path.selected {
+  --color: oklch(60% 45% 0);
+  fill: var(--color) !important;
+}
+
+.legend li.selected {
+  border-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent), canvas 82%);
 }
 
 .legend {
