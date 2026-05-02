@@ -12,6 +12,19 @@ if (projectsTitle && Array.isArray(projects)) {
 const projectsContainer = document.querySelector('.projects');
 renderProjects(projects, projectsContainer, 'h2');
 
+const searchInput = document.querySelector('.searchBar');
+let query = '';
+
+searchInput.addEventListener('input', (event) => {
+  query = event.target.value.toLowerCase();
+  const filteredProjects = projects.filter((project) => {
+    const values = Object.values(project).join('\n').toLowerCase();
+    return values.includes(query);
+  });
+  projectsTitle.textContent = `Personal Projects (${filteredProjects.length})`;
+  renderProjects(filteredProjects, projectsContainer, 'h2');
+});
+
 // Expose for browser-console testing (modules don't add names to global scope).
 window.renderProjects = renderProjects;
 window.projectsData = projects;
@@ -26,7 +39,7 @@ let rolledData = d3.rollup(
   (v) => v.length, // count the number of projects in each year
   (d) => d.year // group by year
 );
-let data = rolledData.map(([year, count]) => {
+let data = Array.from(rolledData, ([year, count]) => {
   return { value: count, label: year };
 });
 
