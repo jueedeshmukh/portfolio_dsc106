@@ -337,3 +337,69 @@ h1 {
   color: color-mix(in oklch, canvastext 40%, canvas 60%);
   font-weight: 500;
 }
+
+.gridlines line {
+  stroke: color-mix(in oklch, canvastext 15%, canvas 85%);
+  stroke-dasharray: 4 3;
+}
+
+.gridlines path {
+  display: none;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+
+.stats .stat-card {
+  height: 8rem;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+}
+
+.stats .stat-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.stats .stat-card:hover .stat-card-inner,
+.stats .stat-card:focus .stat-card-inner {
+  transform: rotateY(180deg);
+}
+
+.stats .stat-card-front,
+.stats .stat-card-back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in oklch, canvastext 15%, canvas 85%);
+  border-radius: 0.6rem;
+  backface-visibility: hidden;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.stats .stat-card-front {
+  background: color-mix(in oklch, var(--color-accent), canvas 88%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: color-mix(in oklch, canvastext 65%, canvas 35%);
+}
+
+.stats .stat-card-back {
+  transform: rotateY(180deg);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: canvas;
+}
