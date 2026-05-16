@@ -109,8 +109,11 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
   for (const proj of project) {
     const article = document.createElement('article');
     const projectYear = proj.year ?? 'Year unavailable';
+    const titleHTML = proj.url
+      ? `<a href="${proj.url}" target="_blank" rel="noopener noreferrer">${proj.title}</a>`
+      : proj.title;
     article.innerHTML = `
-    <${headingTag}>${proj.title}</${headingTag}>
+    <${headingTag}>${titleHTML}</${headingTag}>
     <img src="${proj.image}" alt="${proj.title}">
     <div class="project-meta">
       <p>${proj.description}</p>

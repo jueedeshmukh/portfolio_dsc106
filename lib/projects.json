@@ -12,10 +12,11 @@
 		"description": "Predicting movie profitability through audience ratings and budget."
 	},
 	{
-		"title": "Taylor Swift Song Analytics Project",
-        "year": "2024",
+		"title": "Bikewatching",
+		"year": "2026",
+		"url": "https://jueedeshmukh.github.io/bikewatching_106/",
 		"image": "https://vis-society.github.io/labs/2/images/empty.svg",
-		"description": "Analyzing Taylor Swift's song lyrics and album trends, and generating song recommendations."
+		"description": "Interactive map visualizing Boston bike-share departures, arrivals, and routes filtered by time of day."
 	},
 	{
 		"title": "Friends Reboot Projects",
